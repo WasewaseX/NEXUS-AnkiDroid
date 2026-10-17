@@ -120,8 +120,9 @@ class ExperimentManager(var config: ExperimentConfig = ExperimentConfig()) {
 
     /**
      * Aggregates the raw DPI ingredients per arm, computed only from real logged events:
-     * active study seconds (reviews + exercises), delayed assessment outcomes at day 7/30
-     * (overall and per skill). No target, threshold or prediction is applied here.
+     * active study seconds (ALL logged active time: reviews + exercises + delayed
+     * assessments), delayed assessment outcomes at day 7/30 (overall and per skill).
+     * No target, threshold or prediction is applied here.
      */
     fun aggregate(): LinkedHashMap<String, Double> {
         val out = LinkedHashMap<String, Double>()

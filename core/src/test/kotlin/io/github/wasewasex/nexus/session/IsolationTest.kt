@@ -171,12 +171,13 @@ class IsolationTest {
             state.profile.recordEvidence(Skill.LISTENING, 0.30, 1.0, state.currentDay, false)
         }
         runFullReviewQueue(eng, ids)
-        // 12 days of absence; reviews come due again
+        // 12 days of absence; the queue is cleared for the new day first, then the stale
+        // activity record is restored to simulate the gap (reviews would otherwise mark
+        // the learner active today and defeat the very rule under test).
         val gapDay = state.currentDay + 12
         eng.ensureDay(gapDay)
-        state.lastActiveEpochDay = gapDay - 12
-        // clear the due queue so the only blocking reason is the gap
         for (id in eng.dueReviewIds()) eng.recordReview(id, Rating.GOOD, gapDay * 86_400_000L + 10 * 3_600_000, 10)
+        state.lastActiveEpochDay = gapDay - 12
         val sel = eng.nextIntervention()
         assertNull("attendance gap must pause enrichment", sel)
         val skip = state.audit.entries.lastOrNull { it.kind == "ENRICHMENT_SKIPPED" }

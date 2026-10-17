@@ -117,8 +117,10 @@ class FsrsTest {
         c = fsrs.review(c, Rating.GOOD, t0).card
         c = fsrs.review(c, Rating.GOOD, t0 + 15 * 60_000).card
         val scheduled = c.dueEpochDay
+        val dayOfFirstReview = Fsrs.epochDay(t0)
         val r = fsrs.review(c, Rating.GOOD, millisAt(scheduled + 3)) // 3 days late
-        assertEquals(3L, r.reviewLog.elapsedDays)
+        // elapsedDays = days since the LAST review (FSRS semantics), not days overdue
+        assertEquals(scheduled + 3 - dayOfFirstReview, r.reviewLog.elapsedDays)
         assertTrue(r.card.dueEpochDay > Fsrs.epochDay(millisAt(scheduled + 3)))
     }
 
