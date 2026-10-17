@@ -31,7 +31,7 @@ class JsonRoundTripTest {
         val treatment = state.experiment.studyableIds(Arm.TREATMENT)
         eng.recordExercise(InterventionType.LISTENING_INPUT, treatment[0], 0.7, t0 + 30 * 60_000, 120, "rt")
         eng.recordAssessment(treatment[0], Skill.PRODUCTION, AssessmentKind.DAY7, 0.6, t0 + 31 * 60_000, 90, "rt")
-        state.budget.setBudgetPct(30)
+        state.budget.changeBudget(30)
 
         val s1 = Json.toJson(state)
         val restored = Json.fromJson<AppState>(s1)

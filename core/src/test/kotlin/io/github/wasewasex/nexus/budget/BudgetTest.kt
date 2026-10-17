@@ -71,14 +71,14 @@ class BudgetTest {
 
     @Test(expected = IllegalArgumentException::class)
     fun `invalid budget percent rejected`() {
-        BudgetController().setBudgetPct(15)
+        BudgetController().changeBudget(15)
     }
 
     @Test
     fun `all pre-registered budget levels accepted`() {
         for (p in intArrayOf(0, 10, 20, 30)) {
             val b = BudgetController()
-            b.setBudgetPct(p)
+            b.changeBudget(p)
             assertEquals(p, b.budgetPct)
         }
     }

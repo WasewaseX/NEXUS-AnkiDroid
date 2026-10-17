@@ -17,7 +17,8 @@ class BudgetController(
     var enrichmentSecondsToday: Int = 0,
     var backlogThreshold: Int = 20,
 ) {
-    fun setBudgetPct(pct: Int) {
+    /** Named `changeBudget` because the property setter already occupies setBudgetPct on the JVM. */
+    fun changeBudget(pct: Int) {
         require(pct == 0 || pct == 10 || pct == 20 || pct == 30) {
             "budgetPct must be one of 0, 10, 20, 30 (got $pct)"
         }

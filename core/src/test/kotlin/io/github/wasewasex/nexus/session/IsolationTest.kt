@@ -116,7 +116,7 @@ class IsolationTest {
     fun `zero budget disables interventions even after reviews`() {
         val (eng, ids) = freshEngine()
         val state = eng.state
-        state.budget.setBudgetPct(0)
+        state.budget.changeBudget(0)
         for (i in 0 until 6) {
             state.profile.recordEvidence(Skill.LISTENING, 0.30, 1.0, state.currentDay, false)
         }

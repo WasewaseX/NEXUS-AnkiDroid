@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
             }
             val old = StateStore.state.budget.budgetPct
             if (pct != old) {
-                StateStore.state.budget.setBudgetPct(pct)
+                StateStore.state.budget.changeBudget(pct)
                 StateStore.state.audit.add(
                     "BUDGET_CHANGED",
                     "from" to old.toString(),
