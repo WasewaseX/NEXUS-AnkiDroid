@@ -1,0 +1,650 @@
+[
+  {
+    "id": "n001",
+    "front": "abandon",
+    "back": "to leave something completely and finally",
+    "listeningText": "They had to abandon the car when the snow got too deep.",
+    "listeningOptions": [
+      "to leave something completely",
+      "to repair something carefully",
+      "to sell something quickly",
+      "to hide something well"
+    ],
+    "listeningAnswer": 0,
+    "productionPrompt": "Use 'abandon' in one sentence about a plan that was stopped.",
+    "productionModel": "They abandoned the plan because of the storm.",
+    "grammarSentence": "She abandoned to leave the house early.",
+    "grammarOptions": [
+      "She abandoned the plan early.",
+      "She was abandoned leaving early.",
+      "She abandons to leave early.",
+      "She has abandoned to leave."
+    ],
+    "grammarAnswer": 0,
+    "grammarExplanation": "'Abandon' is transitive: abandon + object. No 'to' after it.",
+    "transferContext": "The new city felt strange at first, but she did not ___ her morning routine.",
+    "transferOptions": ["abandon", "abandoned", "abandoning", "abandons"],
+    "transferAnswer": 0
+  },
+  {
+    "id": "n002",
+    "front": "absorb",
+    "back": "to take something in, like a sponge takes in water",
+    "listeningText": "This paper can absorb a lot of water without breaking.",
+    "listeningOptions": [
+      "The paper breaks when it gets wet.",
+      "The paper soaks up water and stays strong.",
+      "The paper pushes water away.",
+      "The paper dries very slowly."
+    ],
+    "listeningAnswer": 1,
+    "productionPrompt": "Use 'absorb' in one sentence about a shirt and sweat.",
+    "productionModel": "This shirt absorbs sweat, so it feels dry even on hot days.",
+    "grammarSentence": "This towel absorbs easily the water.",
+    "grammarOptions": [
+      "This towel absorbs easy the water.",
+      "This towel absorbs the water easily.",
+      "This towel is absorbed the water easily.",
+      "This towel absorb the water easily."
+    ],
+    "grammarAnswer": 1,
+    "grammarExplanation": "After 'absorbs' comes the object first, then the adverb: absorbs the water easily.",
+    "transferContext": "Reading before bed helps me ___ new information better.",
+    "transferOptions": ["absorbs", "absorb", "absorbed", "absorbing"],
+    "transferAnswer": 1
+  },
+  {
+    "id": "n003",
+    "front": "accurate",
+    "back": "exact and correct, without mistakes",
+    "listeningText": "Make sure the address on the form is accurate before you send it.",
+    "listeningOptions": [
+      "Send the form before checking the address.",
+      "The address on the form is always wrong.",
+      "Check that the address is correct before sending.",
+      "Write the address again after sending."
+    ],
+    "listeningAnswer": 2,
+    "productionPrompt": "Use 'accurate' in one sentence about a clock or a map.",
+    "productionModel": "The old station clock is still accurate; it loses only one second a day.",
+    "grammarSentence": "The report gives an information accurate about the test.",
+    "grammarOptions": [
+      "The report gives accurate information about the test.",
+      "The report gives an accurately information about the test.",
+      "The report accuracy gives information about the test.",
+      "The report gives information accurate of the test."
+    ],
+    "grammarAnswer": 0,
+    "grammarExplanation": "'Accurate' is an adjective and goes before the noun: accurate information. 'Information' takes no article here.",
+    "transferContext": "Her translation was simple but ___, so nothing important was lost.",
+    "transferOptions": ["accuracy", "accurate", "accurately", "more accurate"],
+    "transferAnswer": 1
+  },
+  {
+    "id": "n004",
+    "front": "acquire",
+    "back": "to get or gain something, often slowly or with effort",
+    "listeningText": "Children acquire their first language without formal lessons.",
+    "listeningOptions": [
+      "Children need lessons to start speaking.",
+      "Children forget their first language quickly.",
+      "Children teach languages to adults.",
+      "Children learn their first language naturally."
+    ],
+    "listeningAnswer": 3,
+    "productionPrompt": "Use 'acquire' in one sentence about a new skill.",
+    "productionModel": "It took him two years to acquire basic piano skills.",
+    "grammarSentence": "She acquired for a new laptop last week.",
+    "grammarOptions": [
+      "She acquired a new laptop last week.",
+      "She acquired to a new laptop last week.",
+      "She was acquired a new laptop last week.",
+      "She acquires for a new laptop last week."
+    ],
+    "grammarAnswer": 0,
+    "grammarExplanation": "'Acquire' is transitive: acquire + object, with no 'for' or 'to' after it.",
+    "transferContext": "The museum managed to ___ three paintings from the old collection.",
+    "transferOptions": ["acquired", "acquiring", "acquire", "acquires"],
+    "transferAnswer": 2
+  },
+  {
+    "id": "n005",
+    "front": "adapt",
+    "back": "to change something or yourself a little to fit a new situation",
+    "listeningText": "Mountain animals adapt to cold weather by growing thicker fur.",
+    "listeningOptions": [
+      "Animals grow thicker fur to handle the cold.",
+      "Animals move away from cold mountains.",
+      "Animals stay thin in cold weather.",
+      "Animals change the weather around them."
+    ],
+    "listeningAnswer": 0,
+    "productionPrompt": "Use 'adapt' in one sentence about moving to a new school or city.",
+    "productionModel": "After a few weeks she adapted to her new school and made friends.",
+    "grammarSentence": "He adapted his lifestyle for fit the new schedule.",
+    "grammarOptions": [
+      "He adapted his lifestyle for fitting the new schedule.",
+      "He was adapted his lifestyle to fit the new schedule.",
+      "He adapted his lifestyle to fit the new schedule.",
+      "He adapt his lifestyle to fit the new schedule."
+    ],
+    "grammarAnswer": 2,
+    "grammarExplanation": "Use 'to + verb' after 'adapt' to explain purpose: adapted ... to fit.",
+    "transferContext": "The recipe is easy to ___ if you cannot eat dairy.",
+    "transferOptions": ["adapting", "adapted", "adapts", "adapt"],
+    "transferAnswer": 3
+  },
+  {
+    "id": "n006",
+    "front": "adequate",
+    "back": "enough for what is needed, but not more",
+    "listeningText": "Bring adequate water for the hike; there are no shops on the way.",
+    "listeningOptions": [
+      "Buy water at a shop during the hike.",
+      "Take only a little water to stay light.",
+      "There are many shops on the hiking path.",
+      "Take enough water because there are no shops."
+    ],
+    "listeningAnswer": 3,
+    "productionPrompt": "Use 'adequate' in one sentence about sleep or light.",
+    "productionModel": "Seven hours of quiet sleep is adequate for me.",
+    "grammarSentence": "The room has a adequately heating system.",
+    "grammarOptions": [
+      "The room has adequate heating system.",
+      "The room has an adequately heating system.",
+      "The room has an adequate heating system.",
+      "The room has adequacy heating system."
+    ],
+    "grammarAnswer": 2,
+    "grammarExplanation": "Use the adjective 'adequate' before the noun, and 'an' because 'adequate' begins with a vowel sound.",
+    "transferContext": "The bridge is old, but it is still ___ for light traffic.",
+    "transferOptions": ["adequately", "inadequate", "adequate", "adequacy"],
+    "transferAnswer": 2
+  },
+  {
+    "id": "n007",
+    "front": "anticipate",
+    "back": "to expect that something will happen and prepare for it",
+    "listeningText": "Good project managers anticipate problems before they appear.",
+    "listeningOptions": [
+      "They prepare for problems early.",
+      "They wait for problems to appear first.",
+      "They ignore problems completely.",
+      "They create problems on purpose."
+    ],
+    "listeningAnswer": 0,
+    "productionPrompt": "Use 'anticipate' in one sentence about a trip or a test.",
+    "productionModel": "We anticipated heavy traffic, so we left the city two hours early.",
+    "grammarSentence": "I anticipate to finish the report by Friday.",
+    "grammarOptions": [
+      "I anticipate that finish the report by Friday.",
+      "I anticipate finishing the report by Friday.",
+      "I anticipate for finishing the report by Friday.",
+      "I anticipate to finishing the report by Friday."
+    ],
+    "grammarAnswer": 1,
+    "grammarExplanation": "'Anticipate' is followed by the -ing form: anticipate doing something.",
+    "transferContext": "The team ___ a short delay and ordered extra snacks for the waiting guests.",
+    "transferOptions": ["anticipate", "anticipated", "anticipating", "anticipates"],
+    "transferAnswer": 1
+  },
+  {
+    "id": "n008",
+    "front": "approach",
+    "back": "to move closer to something; or a way of doing something",
+    "listeningText": "The train slowed down as it approached the old station.",
+    "listeningOptions": [
+      "The train sped up and passed the station.",
+      "The train stopped far from the station.",
+      "The train slowed down near the station.",
+      "The train left the station very quickly."
+    ],
+    "listeningAnswer": 2,
+    "productionPrompt": "Use 'approach' in one sentence about a deadline or an animal.",
+    "productionModel": "Keep your hand calm when you approach a nervous cat.",
+    "grammarSentence": "We discussed about a new approach for the problem.",
+    "grammarOptions": [
+      "We discussed a new approach to the problem.",
+      "We discussed about a new approach to the problem.",
+      "We discussed a new approach for to the problem.",
+      "We discussed for a new approach to the problem."
+    ],
+    "grammarAnswer": 0,
+    "grammarExplanation": "'Discuss' takes a direct object with no 'about', and the fixed pair is 'approach to something'.",
+    "transferContext": "Winter is ___, so the birds are flying south.",
+    "transferOptions": ["approach", "approached", "approaches", "approaching"],
+    "transferAnswer": 3
+  },
+  {
+    "id": "n009",
+    "front": "assess",
+    "back": "to judge the quality or level of something carefully",
+    "listeningText": "The teacher will assess your speaking by recording a short interview.",
+    "listeningOptions": [
+      "You must record the teacher speaking.",
+      "Your speaking will be judged from a recorded interview.",
+      "The interview will not be used for grading.",
+      "Speaking is assessed only by written tests."
+    ],
+    "listeningAnswer": 1,
+    "productionPrompt": "Use 'assess' in one sentence about checking a house or a patient.",
+    "productionModel": "The engineer assessed the old bridge before cars were allowed on it again.",
+    "grammarSentence": "The doctor assessed about the patient's injury.",
+    "grammarOptions": [
+      "The doctor assessed the patient's injury.",
+      "The doctor assessed about the injury of the patient.",
+      "The doctor was assessed the patient's injury.",
+      "The doctor assess about the patient's injury."
+    ],
+    "grammarAnswer": 0,
+    "grammarExplanation": "'Assess' takes a direct object; no 'about' is needed.",
+    "transferContext": "Before lending money, the bank ___ how risky the borrower is.",
+    "transferOptions": ["assess", "assesses", "assessed", "assessing"],
+    "transferAnswer": 1
+  },
+  {
+    "id": "n010",
+    "front": "assume",
+    "back": "to believe something is true without checking it",
+    "listeningText": "Do not assume the shop is open on Sunday; check the website first.",
+    "listeningOptions": [
+      "The shop is definitely open on Sunday.",
+      "The website shows old opening hours.",
+      "Check the website instead of guessing about Sunday.",
+      "Assume the shop is closed every day."
+    ],
+    "listeningAnswer": 2,
+    "productionPrompt": "Use 'assume' in one sentence about a message you did not fully read.",
+    "productionModel": "I assumed the meeting was cancelled because nobody replied to my message.",
+    "grammarSentence": "She assumed that he knows the answer, but she was wrong.",
+    "grammarOptions": [
+      "She assumed that he knew the answer, but she was wrong.",
+      "She assumed that he knows the answer, but she was right.",
+      "She assume that he knew the answer, but she was wrong.",
+      "She assuming that he knew the answer, but she was wrong."
+    ],
+    "grammarAnswer": 0,
+    "grammarExplanation": "After past 'assumed', use past 'knew' in the following clause.",
+    "transferContext": "Let us not ___ everyone agrees; let us take a quick vote.",
+    "transferOptions": ["assuming", "assumed", "assume", "assumes"],
+    "transferAnswer": 2
+  },
+  {
+    "id": "n011",
+    "front": "attribute",
+    "back": "to say that something was caused by something else",
+    "listeningText": "The coach attributes the team's success to daily training.",
+    "listeningOptions": [
+      "The coach thinks success came from luck.",
+      "The coach says daily training caused the success.",
+      "The coach wants to train less often.",
+      "The team trains only before games."
+    ],
+    "listeningAnswer": 1,
+    "productionPrompt": "Use 'attribute' in one sentence about success or failure at school.",
+    "productionModel": "She attributes her good grades to studying a little every evening.",
+    "grammarSentence": "He attributed his recovery to the medicine what the doctor gave.",
+    "grammarOptions": [
+      "He attributed his recovery for the medicine that the doctor gave.",
+      "He attributed his recovery to the medicine that the doctor gave.",
+      "He attributed to his recovery the medicine that the doctor gave.",
+      "He was attributed his recovery to the medicine."
+    ],
+    "grammarAnswer": 1,
+    "grammarExplanation": "The fixed pattern is 'attribute X to Y', and the relative word is 'that' (or nothing), not 'what'.",
+    "transferContext": "Researchers ___ the better results to the new teaching method.",
+    "transferOptions": ["attributed", "attributes", "attribute", "attributing"],
+    "transferAnswer": 2
+  },
+  {
+    "id": "n012",
+    "front": "benefit",
+    "back": "a good or helpful result; or to get help from something",
+    "listeningText": "Walking to school benefits children by improving their focus.",
+    "listeningOptions": [
+      "Walking helps children focus better.",
+      "Walking makes children tired at school.",
+      "Only the bus helps children focus.",
+      "Children prefer walking to focusing."
+    ],
+    "listeningAnswer": 0,
+    "productionPrompt": "Use 'benefit' in one sentence about a hobby.",
+    "productionModel": "Playing chess benefits older adults by keeping their minds active.",
+    "grammarSentence": "Regular exercise is benefit for both body and mind.",
+    "grammarOptions": [
+      "Regular exercise benefit for both body and mind.",
+      "Regular exercise is beneficial both body and mind.",
+      "Regular exercise benefits both body and mind.",
+      "Regular exercise is benefit both body and mind."
+    ],
+    "grammarAnswer": 2,
+    "grammarExplanation": "Here you need the verb 'benefits' with third-person -s; 'is benefit' is not a correct verb form.",
+    "transferContext": "The new bus line will ___ thousands of commuters.",
+    "transferOptions": ["benefits", "benefited", "benefit", "benefiting"],
+    "transferAnswer": 2
+  },
+  {
+    "id": "n013",
+    "front": "capacity",
+    "back": "the amount that something can hold or produce",
+    "listeningText": "The stadium has a capacity of forty thousand people.",
+    "listeningOptions": [
+      "The stadium is closed to forty thousand people.",
+      "The stadium holds only a few people.",
+      "Forty thousand people built the stadium.",
+      "Forty thousand people can fit in the stadium."
+    ],
+    "listeningAnswer": 3,
+    "productionPrompt": "Use 'capacity' in one sentence about a lift, a bus, or a battery.",
+    "productionModel": "The lift has a capacity of eight people, so we took the stairs.",
+    "grammarSentence": "The hall's capacity are three hundred seats.",
+    "grammarOptions": [
+      "The hall's capacity is three hundred seats.",
+      "The hall's capacity were three hundred seats.",
+      "The hall's capacities is three hundred seats.",
+      "The hall capacity are three hundred seats."
+    ],
+    "grammarAnswer": 0,
+    "grammarExplanation": "'Capacity' is an uncountable noun here, so it takes the singular verb 'is'.",
+    "transferContext": "The factory is running at full ___ to meet holiday demand.",
+    "transferOptions": ["capacities", "capacity", "capably", "capacity's"],
+    "transferAnswer": 1
+  },
+  {
+    "id": "n014",
+    "front": "challenge",
+    "back": "something difficult that tests your ability",
+    "listeningText": "Learning to drive in a big city is a real challenge for beginners.",
+    "listeningOptions": [
+      "Beginners learn city driving very easily.",
+      "Cities are the best place for new drivers.",
+      "Driving in a big city is hard for new learners.",
+      "Driving teachers challenge beginners to race."
+    ],
+    "listeningAnswer": 2,
+    "productionPrompt": "Use 'challenge' in one sentence about learning English.",
+    "productionModel": "The biggest challenge in English for me is listening to fast speakers.",
+    "grammarSentence": "She challenged herself for speak only English for a week.",
+    "grammarOptions": [
+      "She challenged herself for speaking only English for a week.",
+      "She challenge herself to speak only English for a week.",
+      "She challenged to herself speak only English for a week.",
+      "She challenged herself to speak only English for a week."
+    ],
+    "grammarAnswer": 3,
+    "grammarExplanation": "The pattern is 'challenge someone to do something'.",
+    "transferContext": "Teaching thirty teenagers is a ___, but I love it.",
+    "transferOptions": ["challenging", "challenge", "challenged", "challenger"],
+    "transferAnswer": 1
+  },
+  {
+    "id": "n015",
+    "front": "circumstance",
+    "back": "a fact or condition connected with a situation (often plural: circumstances)",
+    "listeningText": "Under no circumstances should you share your password with anyone.",
+    "listeningOptions": [
+      "Share your password only with friends.",
+      "Never share your password with anyone.",
+      "Passwords are shared under normal conditions.",
+      "You must change your password for everyone."
+    ],
+    "listeningAnswer": 1,
+    "productionPrompt": "Use 'circumstances' in one sentence about a change of plans.",
+    "productionModel": "Due to circumstances beyond our control, the concert moved to next month.",
+    "grammarSentence": "In no circumstances we should panic.",
+    "grammarOptions": [
+      "Under no circumstances should we panic.",
+      "In no circumstances we should not panic.",
+      "Under no circumstances we should panic.",
+      "Under no circumstance should panic we."
+    ],
+    "grammarAnswer": 0,
+    "grammarExplanation": "The fixed phrase is 'under no circumstances', and after a negative opening the word order inverts: 'should we'.",
+    "transferContext": "The rescue team adapted to every ___, from rain to darkness.",
+    "transferOptions": ["circumstances", "circumstantial", "circumstance", "circumstances'"],
+    "transferAnswer": 2
+  },
+  {
+    "id": "n016",
+    "front": "commit",
+    "back": "to promise firmly to do something; or to do something wrong such as a crime",
+    "listeningText": "The company committed to cutting plastic waste by half this year.",
+    "listeningOptions": [
+      "The company doubled its plastic waste.",
+      "The company refused to talk about plastic.",
+      "The company promised to halve its plastic waste.",
+      "The company finished its plastic plan last year."
+    ],
+    "listeningAnswer": 2,
+    "productionPrompt": "Use 'commit to' in one sentence about a weekly plan.",
+    "productionModel": "I committed to practicing English for twenty minutes every evening.",
+    "grammarSentence": "She is committed for helping the new students.",
+    "grammarOptions": [
+      "She commits for helping the new students.",
+      "She is committed to helping the new students.",
+      "She is commit to help the new students.",
+      "She is committed for help the new students."
+    ],
+    "grammarAnswer": 1,
+    "grammarExplanation": "The fixed pattern is 'committed to + -ing'.",
+    "transferContext": "He ___ two basic errors in the first round of the contest.",
+    "transferOptions": ["commit", "committing", "commits", "committed"],
+    "transferAnswer": 3
+  },
+  {
+    "id": "n017",
+    "front": "community",
+    "back": "a group of people living in the same area or sharing the same interests",
+    "listeningText": "Our community shares tools and books in a small free library.",
+    "listeningOptions": [
+      "Only the library owns tools here.",
+      "People here share tools and books freely.",
+      "We sell books to our neighbours.",
+      "The library charges for sharing tools."
+    ],
+    "listeningAnswer": 1,
+    "productionPrompt": "Use 'community' in one sentence about neighbours helping each other.",
+    "productionModel": "The community collected warm clothes for families after the flood.",
+    "grammarSentence": "The community are very friendly here.",
+    "grammarOptions": [
+      "The community is very friendly here.",
+      "The communities is very friendly here.",
+      "The community be very friendly here.",
+      "The community are very friendliness here."
+    ],
+    "grammarAnswer": 0,
+    "grammarExplanation": "Treat 'community' as a singular noun, so the verb is 'is'.",
+    "transferContext": "Online, fans of the game formed a helpful ___ that shares tips.",
+    "transferOptions": ["communities", "communicate", "communal", "community"],
+    "transferAnswer": 3
+  },
+  {
+    "id": "n018",
+    "front": "compensate",
+    "back": "to pay for or make up for something bad, a loss, or extra work",
+    "listeningText": "The airline compensated passengers for the six-hour delay.",
+    "listeningOptions": [
+      "Passengers paid the airline for waiting.",
+      "The delay was only six minutes long.",
+      "The airline apologized but gave nothing.",
+      "Passengers got payment for the long delay."
+    ],
+    "listeningAnswer": 3,
+    "productionPrompt": "Use 'compensate' in one sentence about extra work.",
+    "productionModel": "The manager promised to compensate the team for the weekend shift.",
+    "grammarSentence": "Nothing can compensate the loss of a whole harvest.",
+    "grammarOptions": [
+      "Nothing can compensate of the loss of a whole harvest.",
+      "Nothing can compensates the loss of a whole harvest.",
+      "Nothing can compensate for the loss of a whole harvest.",
+      "Nothing can compensate to the loss of a whole harvest."
+    ],
+    "grammarAnswer": 2,
+    "grammarExplanation": "The fixed pattern is 'compensate for something'.",
+    "transferContext": "She jogs in the morning to ___ for sitting all day at work.",
+    "transferOptions": ["compensating", "compensate", "compensated", "compensates"],
+    "transferAnswer": 1
+  },
+  {
+    "id": "n019",
+    "front": "component",
+    "back": "one part that makes up a machine, a system, or an idea",
+    "listeningText": "Each component of the bicycle was checked before the race.",
+    "listeningOptions": [
+      "Only the wheels were checked.",
+      "Every part of the bike was checked.",
+      "The bike was built during the race.",
+      "The race checked the riders, not the bikes."
+    ],
+    "listeningAnswer": 1,
+    "productionPrompt": "Use 'component' in one sentence about a computer or a team.",
+    "productionModel": "Trust is the key component of a good team.",
+    "grammarSentence": "The engine has many component that can fail.",
+    "grammarOptions": [
+      "The engine has much components that can fail.",
+      "The engine has many components that can fail.",
+      "The engine has many component of that can fail.",
+      "The engine has many component that can fails."
+    ],
+    "grammarAnswer": 1,
+    "grammarExplanation": "'Many' needs the plural 'components'.",
+    "transferContext": "Sleep is an important ___ of exam preparation.",
+    "transferOptions": ["components", "compose", "component", "component's"],
+    "transferAnswer": 2
+  },
+  {
+    "id": "n020",
+    "front": "concentrate",
+    "back": "to give all your attention to something",
+    "listeningText": "I cannot concentrate when music with words is playing nearby.",
+    "listeningOptions": [
+      "Lyrics make focusing hard for the speaker.",
+      "The speaker focuses better with music.",
+      "The speaker never listens to music.",
+      "Words in music help the speaker study."
+    ],
+    "listeningAnswer": 0,
+    "productionPrompt": "Use 'concentrate on' in one sentence about homework.",
+    "productionModel": "I switch my phone off so I can concentrate on my homework.",
+    "grammarSentence": "Please concentrate at your own worksheet.",
+    "grammarOptions": [
+      "Please concentrate for your own worksheet.",
+      "Please concentrate to your own worksheet.",
+      "Please concentrate on your own worksheet.",
+      "Please concentrate at your worksheet own."
+    ],
+    "grammarAnswer": 2,
+    "grammarExplanation": "The fixed pattern is 'concentrate on something'.",
+    "transferContext": "The final problem was hard, so she closed her eyes and ___.",
+    "transferOptions": ["concentrate", "concentrating", "concentrates", "concentrated"],
+    "transferAnswer": 3
+  },
+  {
+    "id": "n021",
+    "front": "conduct",
+    "back": "to organize and do something such as a test or an interview",
+    "listeningText": "Researchers conducted a survey about sleep in ten schools.",
+    "listeningOptions": [
+      "Ten schools refused to discuss sleep.",
+      "Researchers slept in ten different schools.",
+      "Only one school joined the survey.",
+      "Researchers ran a sleep survey in ten schools."
+    ],
+    "listeningAnswer": 3,
+    "productionPrompt": "Use 'conduct' in one sentence about an interview or an experiment.",
+    "productionModel": "The students conducted an experiment to test which paper towel absorbs best.",
+    "grammarSentence": "The scientist conducted to a series of tests.",
+    "grammarOptions": [
+      "The scientist was conducted a series of tests.",
+      "The scientist conducted a series of tests.",
+      "The scientist conducted to a series of test.",
+      "The scientist conducts to a series of tests."
+    ],
+    "grammarAnswer": 1,
+    "grammarExplanation": "'Conduct' takes a direct object; no 'to' after it.",
+    "transferContext": "A guide ___ visitors through the museum every hour.",
+    "transferOptions": ["conducting", "conducted", "conducts", "conduct"],
+    "transferAnswer": 2
+  },
+  {
+    "id": "n022",
+    "front": "consequence",
+    "back": "a result of an action or decision, often a bad one",
+    "listeningText": "Skipping breakfast has a consequence: by ten o'clock you lose focus.",
+    "listeningOptions": [
+      "Breakfast has no effect on focus.",
+      "Focus improves when meals are skipped.",
+      "Not eating breakfast makes focus worse later.",
+      "Breakfast must be eaten after ten o'clock."
+    ],
+    "listeningAnswer": 2,
+    "productionPrompt": "Use 'consequence' in one sentence about forgetting an umbrella.",
+    "productionModel": "As a consequence of forgetting my umbrella, I sat through class in wet clothes.",
+    "grammarSentence": "He did not study, as the consequence he failed the quiz.",
+    "grammarOptions": [
+      "He did not study; as consequence he failed the quiz.",
+      "He did not study; as a consequence, he failed the quiz.",
+      "He did not study; as a consequence of he failed the quiz.",
+      "He did not study; as a consequence he fail the quiz."
+    ],
+    "grammarAnswer": 1,
+    "grammarExplanation": "The fixed phrase is 'as a consequence' (with 'a').",
+    "transferContext": "Cutting the trees had a serious ___: the slope began to slide.",
+    "transferOptions": ["consequences", "consequently", "sequence", "consequence"],
+    "transferAnswer": 3
+  },
+  {
+    "id": "n023",
+    "front": "considerable",
+    "back": "large in amount or degree; clearly noticeable",
+    "listeningText": "The storm caused considerable damage to the old bridge.",
+    "listeningOptions": [
+      "The bridge was badly damaged by the storm.",
+      "The storm caused no damage at all.",
+      "The bridge was repaired before the storm.",
+      "Only one plank of the bridge moved."
+    ],
+    "listeningAnswer": 0,
+    "productionPrompt": "Use 'considerable' in one sentence about time or money.",
+    "productionModel": "Restoring the garden took a considerable amount of time and money.",
+    "grammarSentence": "She has a considerable of experience in teaching.",
+    "grammarOptions": [
+      "She has considerably of experience in teaching.",
+      "She has a considerable experience of teaching.",
+      "She has considerable experience in teaching.",
+      "She has a considerable of experience in teaching."
+    ],
+    "grammarAnswer": 2,
+    "grammarExplanation": "'Considerable' is an adjective used directly before an uncountable noun: considerable experience.",
+    "transferContext": "The project needed ___ support from local businesses.",
+    "transferOptions": ["considerably", "considering", "considerable", "consider"],
+    "transferAnswer": 2
+  },
+  {
+    "id": "n024",
+    "front": "contribute",
+    "back": "to give money, ideas, or help to a shared effort",
+    "listeningText": "Every family contributed one dish to the school festival.",
+    "listeningOptions": [
+      "One family cooked all the dishes.",
+      "Families bought dishes at the festival.",
+      "The school cooked for every family.",
+      "Each family brought a dish to share."
+    ],
+    "listeningAnswer": 3,
+    "productionPrompt": "Use 'contribute' in one sentence about a group project.",
+    "productionModel": "Each of us contributed two ideas to the class poster.",
+    "grammarSentence": "Volunteers contributed with food for the shelter.",
+    "grammarOptions": [
+      "Volunteers were contributed food to the shelter.",
+      "Volunteers contribute with food for the shelter.",
+      "Volunteers contributed with food for the shelter.",
+      "Volunteers contributed food to the shelter."
+    ],
+    "grammarAnswer": 3,
+    "grammarExplanation": "'Contribute' takes a direct object: contribute food to someone.",
+    "transferContext": "Regular practice ___ to better speaking skills.",
+    "transferOptions": ["contributing", "contribute", "contributes", "contributed"],
+    "transferAnswer": 2
+  }
+]

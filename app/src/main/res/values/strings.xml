@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NEXUS-AnkiDroid</string>
+    <string name="subtitle">FSRS scheduling + optional NEXUS-SCOPE layer — a local-only experiment app. Zero permissions; data never leaves the device unless you export it yourself.</string>
+
+    <!-- Main screen -->
+    <string name="deck_title">Deck &amp; arms</string>
+    <string name="deck_stats_fmt">Total items: %1$d · CONTROL: %2$d · TREATMENT: %3$d · Held-out: %4$d</string>
+    <string name="today_title">Today</string>
+    <string name="today_fmt">Due now: %1$d (reviews + new) · Overdue: %2$d · Reviews done: %3$d</string>
+    <string name="notice_assessments_due">Delayed assessments due: %1$d</string>
+    <string name="budget_title">Enrichment budget (share of review time; scheduled FSRS reviews are always protected)</string>
+    <string name="budget_0" formatted="false">0% — pure FSRS for every item</string>
+    <string name="budget_10" formatted="false">10% — light enrichment</string>
+    <string name="budget_20" formatted="false">20% — NEXUS-SCOPE default</string>
+    <string name="budget_30" formatted="false">30% — heavy enrichment</string>
+    <string name="consent_label">I consent to keeping my study data on this device and to exporting it manually. The app has no INTERNET permission and uploads nothing.</string>
+    <string name="start_studying">Start studying</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="export_json">Export data (JSON)</string>
+    <string name="export_requires_consent">Export is disabled until you tick the consent box.</string>
+    <string name="export_chooser_title">Share NEXUS-AnkiDroid export</string>
+    <string name="export_subject">NEXUS-AnkiDroid data export</string>
+
+    <!-- Study loop -->
+    <string name="status_fmt">Assessments due: %1$d · Reviews due: %2$d · Enrichment left today: %3$ds</string>
+    <string name="review_stage">Review — card state: %1$s</string>
+    <string name="show_answer">Show answer</string>
+    <string name="rating_again">AGAIN</string>
+    <string name="rating_hard">HARD</string>
+    <string name="rating_good">GOOD</string>
+    <string name="rating_easy">EASY</string>
+    <string name="assessment_stage">Delayed assessment (%1$s) — item %2$s</string>
+    <string name="assessment_missing">Missing deck content for item %1$s.</string>
+    <string name="skill_meaning_recall">Skill: meaning recall</string>
+    <string name="skill_listening">Skill: listening</string>
+    <string name="skill_production">Skill: production</string>
+    <string name="skill_grammar">Skill: grammar</string>
+    <string name="skill_transfer">Skill: transfer</string>
+    <string name="recall_meaning">Recall meaning</string>
+    <string name="listening_hidden_note">You will hear one sentence (played at 1.15x — the unfamiliar-audio proxy). The transcript stays hidden until after your attempt.</string>
+    <string name="play_sentence">Play sentence</string>
+    <string name="transcript_fmt">Transcript: %1$s</string>
+    <string name="correct_answer_fmt">Correct answer: %1$s</string>
+    <string name="continue_label">Continue</string>
+    <string name="production_first_note">Type your own answer BEFORE revealing the model — production first is the point.</string>
+    <string name="production_hint">Type your sentence here…</string>
+    <string name="reveal_model">Reveal model answer</string>
+    <string name="type_first_toast">Type your attempt before revealing the model.</string>
+    <string name="grade_correct">Correct</string>
+    <string name="grade_partial">Partial</string>
+    <string name="grade_wrong">Wrong</string>
+    <string name="intervention_stage">NEXUS-SCOPE exercise — %1$s</string>
+    <string name="why_this_exercise">Why this exercise: %1$s</string>
+    <string name="grammar_repair_note">The sentence has one typical error. Pick the correct version.</string>
+    <string name="transfer_note">Same expression, new context — the meaning travels with the form.</string>
+    <string name="per_note">Recall the meaning silently, then rate your confidence before revealing.</string>
+    <string name="i_was_sure">I was sure</string>
+    <string name="i_was_unsure">I was unsure</string>
+    <string name="recalled_right">That matches what I recalled</string>
+    <string name="recalled_wrong">Not what I recalled</string>
+    <string name="confident_mistake">Confident mistake — repair: %1$s</string>
+    <string name="retry_note">Independent retry — same exercise type, a different item.</string>
+    <string name="all_caught_up">All caught up.</string>
+    <string name="done_msg">FSRS protected — %1$d reviews done; enrichment used %2$ds of %3$ds.</string>
+    <string name="back_home">Back to home</string>
+
+    <!-- Dashboard -->
+    <string name="card_skills">Skill profile (provisional until delayed verification)</string>
+    <string name="skill_line_fmt">%1$s — level %2$s (%3$d evidence%4$s)</string>
+    <string name="provisional_suffix">, provisional</string>
+    <string name="card_budget">Budget today</string>
+    <string name="budget_allowed_fmt">Allowed enrichment: %1$ds</string>
+    <string name="budget_enrichment_fmt">Enrichment used: %1$ds</string>
+    <string name="budget_review_fmt">Review time: %1$ds</string>
+    <string name="budget_remaining_fmt">Remaining enrichment: %1$ds</string>
+    <string name="card_reviews">Reviews</string>
+    <string name="reviews_done_fmt">Done today: %1$d</string>
+    <string name="reviews_due_fmt">Due now: %1$d</string>
+    <string name="reviews_overdue_fmt">Overdue: %1$d</string>
+    <string name="card_audit">Recent audit (last 10)</string>
+    <string name="audit_entry_fmt">%1$s — %2$s</string>
+    <string name="audit_empty">No audit entries yet.</string>
+    <string name="card_experiment">Experiment results — CONTROL vs TREATMENT</string>
+    <string name="arm_header_fmt">Arm %1$s</string>
+    <string name="metric_fmt">%1$s: %2$s</string>
+    <string name="metric_reviews">Reviews</string>
+    <string name="metric_exercises">Exercises</string>
+    <string name="metric_active_seconds">Active seconds</string>
+    <string name="experiment_caption">Outcomes are computed only from logged data; DPI is computed offline from exports. This app makes no efficacy claims.</string>
+    <string name="card_tools">Tools</string>
+    <string name="novel_check">Novel-item check (held-out)</string>
+    <string name="novel_check_none">No held-out items are available.</string>
+    <string name="novel_check_stage">Novel-item check — held-out item %1$s (meaning recall)</string>
+    <string name="novel_check_note">You have never studied this item. Recall its meaning, then self-grade.</string>
+    <string name="novel_check_done">Held-out check logged (outcome %1$s).</string>
+    <string name="back_to_dashboard">Back to dashboard</string>
+</resources>

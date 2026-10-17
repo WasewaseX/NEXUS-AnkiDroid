@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Calm dark-teal palette; primary is the NEXUS teal. -->
+    <color name="nexus_primary">#00695C</color>
+    <color name="nexus_on_primary">#FFFFFF</color>
+    <color name="nexus_primary_container">#B2DFDB</color>
+    <color name="nexus_on_primary_container">#00201C</color>
+    <color name="nexus_secondary">#266B60</color>
+    <color name="nexus_background">#F4F6F5</color>
+    <color name="nexus_surface">#FFFFFF</color>
+    <color name="nexus_on_surface">#1A1C1B</color>
+    <color name="nexus_notice">#B00020</color>
+    <color name="ic_launcher_background">#00695C</color>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simple original glyph: an open book (two pages + spine) with a spark above it.
+     Kept inside the adaptive-icon safe zone (66dp inner circle). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- left page -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M30,36 L52,40 L52,78 L30,74 Z" />
+
+    <!-- right page -->
+    <path
+        android:fillColor="#E0F2F1"
+        android:pathData="M78,36 L56,40 L56,78 L78,74 Z" />
+
+    <!-- spine -->
+    <path
+        android:fillColor="#B2DFDB"
+        android:pathData="M53,38 L55,38 L55,80 L53,80 Z" />
+
+    <!-- spark -->
+    <path
+        android:fillColor="#FFD54F"
+        android:pathData="M70,28 L72,33 L77,35 L72,37 L70,42 L68,37 L63,35 L68,33 Z" />
+</vector>

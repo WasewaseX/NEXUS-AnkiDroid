@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark-mode neutrals so the DayNight theme stays honest in both modes;
+         the NEXUS teal primary is shared with values/colors.xml. -->
+    <color name="nexus_background">#101413</color>
+    <color name="nexus_surface">#161B1A</color>
+    <color name="nexus_on_surface">#E0E5E4</color>
+    <color name="nexus_on_primary_container">#B2DFDB</color>
+    <color name="nexus_primary_container">#004D43</color>
+    <color name="nexus_notice">#FFB4AB</color>
+</resources>

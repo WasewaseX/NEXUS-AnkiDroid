@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/nexus_primary"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="12dp"
+            android:text="@string/subtitle"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="@string/deck_title"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/container_deck_stats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="@string/today_title"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/container_today"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/text_notice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp"
+            android:textColor="@color/nexus_notice"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp"
+            android:text="@string/budget_title"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/budget_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rb_budget_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/budget_0" />
+
+            <RadioButton
+                android:id="@+id/rb_budget_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/budget_10" />
+
+            <RadioButton
+                android:id="@+id/rb_budget_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/budget_20" />
+
+            <RadioButton
+                android:id="@+id/rb_budget_30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/budget_30" />
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/consent_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="@string/consent_label" />
+
+        <Button
+            android:id="@+id/button_study"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/start_studying" />
+
+        <Button
+            android:id="@+id/button_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dashboard" />
+
+        <Button
+            android:id="@+id/button_export"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/export_json" />
+    </LinearLayout>
+</ScrollView>

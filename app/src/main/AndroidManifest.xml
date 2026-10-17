@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      Privacy guarantee (documented): this app requests ZERO permissions.
+      - No INTERNET: nothing can leave the device except via the user-initiated
+        system share sheet used by the "Export data (JSON)" button.
+      - All persistence is local files (filesDir/state.json) through core's Json + AppState.
+      - Text-to-speech uses the on-device engine; no speech data is sent anywhere by this app.
+    -->
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/Theme.Nexus"
+        android:allowBackup="false">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".StudyActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>
