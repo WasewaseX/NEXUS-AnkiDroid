@@ -1,0 +1,137 @@
+{
+  "name": "v1.8 NEXUS-TRIAD — cold-start priors + FSRS-authoritative memory engine + gated contextual recall predictor + NEXUS session controller",
+  "version": "v1.8",
+  "created": "2026-10-19",
+  "based_on": "../v16_nexus_mix2_benchmark (sim15/sim16 imported UNMODIFIED: behavior truth, FSRS wrapper, evaluator, env, DPI endpoint); v14/v15/v16 files untouched",
+
+  "master_seed_blocks": {
+    "calibration": 20260116,
+    "confirmation": 20261101
+  },
+  "seed_policy": "identical to v1.4/v1.5/v1.6 blocks; TRIAD policy-cell selection uses the CALIBRATION block only; the CONFIRMATION block runs ONCE with the frozen cell and is the only evidence for conclusions",
+
+  "horizon_days": 28,
+  "probe_days": [7, 14, 21, 28],
+  "population": { "n_reps": 3, "n_learners_per_archetype": 4 },
+
+  "triad_constants": {
+    "comment": "Declared BEFORE any run. These are a-priori design constants, NOT tuned on any outcome data (no circular tuning): shrinkage k values, EMA rates, delta feature weights, gate thresholds are fixed. The ONLY v1.8 degrees of freedom selected on data are the declared policy cells (goal fraction, intake gate, alpha gating, goal extension), selected on the calibration block exactly like v1.6's policy grid.",
+    "cold_start": {
+      "prior_pseudo_counts": "Beta(1,1) per skill at career start; posterior mean = (1+correct)/(2+n); this is the SHARED PRIOR that dominates when evidence is scarce",
+      "prior_shrink_k_skill": 8,
+      "prior_shrink_k_card": 3,
+      "card_new_threshold_n": 3,
+      "rule": "shrunk_level = (n*observed_level + k*prior_mean)/(n+k); shrunk P for a card with n<3 reviews: p_eff = (n*p_sched + k_card*prior_mean_skill)/(k_card + n)"
+    },
+    "context_features": {
+      "recent_acc_ema": 0.3,
+      "latency_ema": 0.25,
+      "acc_reference": 0.85,
+      "workload_reference_due": 30.0,
+      "absence_horizon_days": 7.0,
+      "delta_weights": {
+        "acc": 2.0,
+        "lat": 0.8,
+        "workload": 0.4,
+        "fatigue": 0.5,
+        "absence": 0.3
+      },
+      "delta_clip_logits": 1.5,
+      "formula": "delta = w_acc*(recent_acc-0.85) - w_lat*max(0, slowdown-1) - w_workload*max(0, due/30 - 0.5) - w_fatigue*fatigue_proxy - w_absence*min(gap_days/7, 1); delta clipped to +/- 1.5 logits. slowdown = per-kind recent-latency EMA / per-kind career-latency EMA (kind-controlled; only slowdown>1 contributes). fatigue_proxy = session_events/40 + elapsed_min/budget, recomputed fresh each session (SESSION SCOPE ONLY - never persisted, never affects FSRS state)"
+    },
+    "alpha_gate": {
+      "comment": "Implements the user's rule: the contextual contribution starts at ZERO until it demonstrates reliable out-of-sample value. P_hybrid = sigmoid(logit(P_eff) + alpha*delta) with alpha=0 for days 1..13. On day 14 the gate fits alpha on days 1-13 by grid search on train split and accepts the alpha ONLY if held-out (systematic 30% split, deterministic) logloss improves by >= 0.005 with >= 40 logged due-review events; otherwise alpha stays 0 for the rest of the career.",
+      "gate_day": 14,
+      "grid": [0.0, 0.25, 0.5, 0.75, 1.0],
+      "val_fraction": 0.3,
+      "min_events": 40,
+      "min_improvement": 0.005
+    },
+    "controller": {
+      "intake_gate": {
+        "fatigue_proxy_threshold": 0.8,
+        "min_session_events": 6,
+        "rule": "if the session fatigue proxy is above threshold at intake time, NEW-CARD intake is skipped (a planned stop); DUE reviews are NEVER skipped (no silent due-review skipping)"
+      },
+      "goal_extend": {
+        "recent_acc_min": 0.85,
+        "extended_goal_fraction": 0.85,
+        "rule": "if recent accuracy >= 0.85 at session start, the finish line for OPTIONAL intake extends from the goal fraction to 0.85 of budget (never beyond budget) - a DPI lever that adds useful encounters on good days only"
+      },
+      "due_core_protect": true,
+      "rule": "v1.6 frozen mechanism: the goal line never truncates DUE reviews; it gates ONLY new-card intake"
+    }
+  },
+
+  "v18_policy_grid": {
+    "comment": "Declared BEFORE any v1.8 run. Only the TRIAD arm varies across cells; comparison arms have unchanged policies in every cell. Selection on the CALIBRATION block only.",
+    "policies": {
+      "triad_a": { "goal_stop_fraction": 0.75, "intake_gate": true,  "alpha_gating": true,  "goal_extend": true },
+      "triad_b": { "goal_stop_fraction": 0.85, "intake_gate": true,  "alpha_gating": true,  "goal_extend": true },
+      "triad_c": { "goal_stop_fraction": 0.75, "intake_gate": false, "alpha_gating": true,  "goal_extend": true },
+      "triad_d": { "goal_stop_fraction": 0.75, "intake_gate": true,  "alpha_gating": false, "goal_extend": true }
+    },
+    "selection_rule": {
+      "block": "calibration",
+      "statistics": "point estimates of paired diffs vs fsrs_multitype (same rep, learner_id)",
+      "eligible_iff": ["ret28_diff >= -0.02", "dpi_rel_gain_pct >= +5.0", "session_minutes_diff <= -0.5", "gap_days_diff <= -0.02"],
+      "rank": "max ret28_diff (protect learning first); tie-break max dpi_rel_gain_pct; then max session reduction",
+      "fallback_if_none_eligible": "maximize the worst violation margin m = min(ret28_diff + 0.02, dpi_rel_gain_pct - 5, -(session_minutes_diff + 0.5), -(gap_days_diff + 0.02)); same tie-breaks; the fallback choice and its margins are recorded in the freeze artifact",
+      "freeze_artifact": "outputs/frozen_triad_policy.json MUST be written before any confirmation-block run"
+    }
+  },
+
+  "v18_scenarios": {
+    "comment": "Behavior-model stress test carried from v1.6 UNCHANGED (same 9 scenarios + base): each patches truth constants IDENTICALLY for all arms; no_frustration disables the quit-frustration valence mark. Scenarios bound which conclusions depend on which assumptions; they are not real-world evidence.",
+    "base": {},
+    "no_monotony": { "K_MONOTONY": 0.0 },
+    "double_monotony": { "K_MONOTONY": 0.24 },
+    "no_fatigue_quit": { "K_FATIGUE": 0.0 },
+    "no_valence_quit": { "K_VALENCE": 0.0 },
+    "no_return_valence": { "B_VALENCE": 0.0, "no_frustration": true },
+    "slow_recovery": { "tau_recovery_days": 1.8 },
+    "skeptical": { "K_MONOTONY": 0.0, "K_FATIGUE": 0.0, "K_VALENCE": 0.0, "B_VALENCE": 0.0, "no_frustration": true },
+    "hard_skeptical": { "K_MONOTONY": 0.0, "K_FATIGUE": 0.0, "K_VALENCE": 0.0, "B_VALENCE": 0.0, "B_HABIT": 0.0, "no_frustration": true }
+  },
+
+  "v18_arms": {
+    "comment": "The user's 8 requested arms. IMPORTANT HONESTY NOTE: in this framework arms (2) and (6) coincide - both are plain FSRS over multi-type material with a naive policy - so they are implemented ONCE as fsrs_multitype and reported with an explicit duplication note; the remaining 7 implementations are distinct.",
+    "1_fsrs_meaning": "fsrs_recall_only (FSRS, meaning items only, grinds to budget) - the status-quo anchor",
+    "2_fsrs_multitype": "fsrs_multitype (FSRS over all five item types, naive due+intake, grinds to budget)",
+    "3_nexus_scope20": "nexus_scope20 (FSRS due-first + NEXUS-SCOPE 2.0 intervention layer: after due drain, a scope reserve = 20% of real due-drain minutes is spent on targeted weakest-skill practice; gates: evidence >= 4, one block per day, deficit x confidence targeting; then intake with the remainder)",
+    "4_nexus_mix2": "nexus_mix2 (v1.6 frozen policy p075_prot: dishabituation interleave, diagnosis weighting, goal line 0.75 with due-core protection) - the v1.6 winner, unchanged",
+    "5_nexus_triad": "nexus_triad (v1.8: mix2 layer + cold-start empirical-Bayes priors + contextual recall predictor with P_hybrid = sigmoid(logit(P_eff) + alpha*delta_context), alpha gated out-of-sample + fatigue-gated intake + accuracy-conditioned goal extension; FSRS remains the AUTHORITATIVE memory engine: TRIAD never modifies intervals)",
+    "6_fsrs": "DUPLICATE of (2) in this framework (plain FSRS multi-type); reported as fsrs_multitype with this note - no fabricated third FSRS variant",
+    "7_rwkv_instant": "rwkv_instant (the v1.4 RWKVInstant scheduler - instant per-item adaptation with global-prior shrinkage - driving the same multi-type presentation; naive session policy)",
+    "8_sm20": "sm20 (the v1.4 SM20 scheduler - SM-2 with a 20-level ease grid - driving the same multi-type presentation; naive session policy)"
+  },
+
+  "v18_end_reason_metrics": {
+    "comment": "Carried from v1.6 UNCHANGED (review change #1 remains in force):",
+    "reasons": ["premature_quit", "budget", "planned_goal", "work_complete"]
+  },
+
+  "v18_preregistration": {
+    "written_before": "any v1.8 run (calibration cells included); truth constants inherited from v1.5/v1.6 without re-tuning; triad_constants are a-priori and not outcome-tuned",
+    "T1_learning_primary": "nexus_triad DPI/hour >= fsrs_multitype + 5% (paired, CI excludes 0) AND ret28_diff >= -0.02 - the v1.4/v1.5/v1.6 rule, unchanged",
+    "T2_engagement": "nexus_triad mean session minutes < fsrs_multitype - 0.5 AND mean inter-session gap < fsrs_multitype - 0.02, CIs excluding 0",
+    "T3_no_harm": "|ret28_diff| <= 0.02 (same statistic as T1's second clause, reported separately)",
+    "T4_prediction_gating": "descriptive: per-career alpha distribution (fraction alpha>0, mean alpha among gated), Brier and logloss of P_eff (FSRS+cold-start shrinkage) vs P_hybrid over ALL logged due-review predictions; the gate GUARANTEES alpha>0 only when held-out logloss improves >= 0.005 (by construction, never worsening on the gate's own validation split)",
+    "T5_scope": "descriptive: nexus_scope20 DPI/h and retention vs fsrs_multitype (SCOPE's interventions cost budget; no pass/fail)",
+    "T6_stress_robustness": "report DPI/session/quit diffs per scenario with CIs; declared expectation (a) session diff negative in every scenario; (b) quit-rate diff < 0 under base, no_monotony, double_monotony, no_valence_quit, slow_recovery; (c) decomposition: mechanical pacing floor = session diff under hard_skeptical; behavior-amplified share = base - hard_skeptical; dependencies stated explicitly",
+    "T7_ablation": "descriptive: triad_d (alpha gating OFF) vs frozen triad cell isolates the alpha-gate contribution; triad_c (intake gate OFF) isolates the fatigue-gated intake contribution; goal-line contribution carried from v1.6 K7",
+    "T8_arm8_check": "descriptive: sm20 and rwkv_instant arms reported vs fsrs_multitype (both use naive session policy; their differences come from the scheduler alone)",
+    "floors": { "dpi_relative_gain_pct": 5.0, "retention_tolerance": 0.02, "session_minutes": 0.5, "gap_days": 0.02, "resolution_floor_dpi": 0.0012 },
+    "analysis": "paired CRN diffs per (rep, learner_id); 95% cluster bootstrap (cluster = learner_id, n=2000); confirmation block is the ONLY evidence for conclusions; calibration used for cell selection/attribution only"
+  },
+
+  "honesty": {
+    "simulation_not_humans": "every number in v1.8 is a property of the declared simulation, not a measurement of real learners",
+    "no_truth_access": "no method sees the truth model, the behavior state, or any learner truth; TRIAD reads only scheduler estimates, item-bank public tags, and outcomes of events it initiated; the alpha gate reads only logged (prediction, outcome) pairs",
+    "fatigue_session_scope": "TRIAD's fatigue proxy affects ONLY current-session predictions and new-card intake gating; it never reduces long-term stability, never modifies FSRS state, and is recomputed fresh each session",
+    "no_due_skipping": "no v1.8 arm ever silently skips a due review; TRIAD's fatigue gate acts ONLY on optional new-card intake",
+    "no_circular_tuning": "truth constants are inherited from v1.5/v1.6 unchanged; triad_constants are a-priori; only the declared policy cells are selected on the calibration block",
+    "arm_duplication": "user's arms (2) and (6) are the same implementation in this framework; reported once, never fabricated into a difference",
+    "biocomputing_status": "unchanged from v1.5/v1.6: bio-inspiration ONLY; no biological substrate simulated or claimed"
+  }
+}

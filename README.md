@@ -83,4 +83,4 @@ The release APK is **debug-signed** so it is directly installable without any si
 
 MIT — Copyright (c) 2026 WasewaseX. FSRS-5 algorithm attribution: the open-spaced-repetition reference ports (MIT-licensed).
 
-This project is **not affiliated with, and in v0.1 is not a code fork of, the AnkiDroid project** — see [docs/LIMITATIONS.md](docs/LIMITATIONS.md).
+**v0.2 update:** a **real AnkiDroid fork now exists** — [WasewaseX/Anki-Android](https://github.com/WasewaseX/Anki-Android) — with **NEXUS-TRIAD v1.8 replacing the bare FSRS review entry** (merged via in-fork PRs #1-#4 as the release gate; real APK published on the fork's Releases). FSRS remains the authoritative memory engine *inside* TRIAD, per the TRIAD spec. The v1.8 benchmark (7 distinct arms incl. RWKV-instant and SM-20; TRIAD +11.41% DPI/h, retention +0.0054, sessions -2.72 min, quits 26.2% vs 37.6%) lives in [benchmarks/v18_nexus_triad_benchmark/](benchmarks/v18_nexus_triad_benchmark/README_v1.8.md) — **simulation evidence, not real-learner evidence**. This standalone app remains the instrument repo; see [docs/LIMITATIONS.md](docs/LIMITATIONS.md).

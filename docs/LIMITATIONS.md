@@ -1,14 +1,20 @@
-# Limitations (v0.1) — the honest list
+# Limitations (v0.2) — the honest list
 
-## Not yet an AnkiDroid fork
+## The real AnkiDroid fork now EXISTS — with these caveats
 
-v0.1 is a **standalone app** implementing the FSRS-5 algorithm and the established NEXUS-SCOPE 2.0 design. It is **NOT yet a code fork of the AnkiDroid APK**:
+As of v0.2, the project maintains a **real fork of AnkiDroid** ([WasewaseX/Anki-Android](https://github.com/WasewaseX/Anki-Android)) in which **NEXUS-TRIAD v1.8 replaces the bare FSRS review entry** (PRs #1–#4 merged inside the fork as the release gate; APK built by CI and published at the fork's Releases). Honest caveats about that fork build:
+
+- **FSRS remains the authoritative memory engine inside TRIAD** — this is the NEXUS-TRIAD spec itself (component 2): the Rust/Anki backend schedules intervals exactly as before; TRIAD adds cold-start priors, the contextual recall predictor `P_hybrid = sigmoid(logit(P_FSRS) + alpha*delta)` (alpha gated at zero until out-of-sample validation), and session-controller state.
+- The fork's engine is a **pure-Kotlin port** of the v1.8 simulation engine in `benchmarks/v18_nexus_triad_benchmark/`; the per-card P_FSRS input currently falls back to the engine's shared-prior estimate until backend retrievability wiring lands.
+- The released APK is **debug-signed** (installable, but not Play-Release-signed).
+
+## The standalone app (this repo, v0.1)
+
+The standalone app in `app/` remains available and is **NOT a code fork of the AnkiDroid APK**:
 
 - no `.apkg` import
 - no AnkiWeb sync
 - no migration of existing review histories
-
-True AnkiDroid integration is the designated next milestone. The exact blocker, stated honestly: **a full AnkiDroid fork build could not be completed inside this environment's time/size budget while preserving a reliable, tested, CI-buildable deliverable.** The standalone path was chosen to still deliver a working, installable instrument.
 
 ## FSRS simplifications
 
