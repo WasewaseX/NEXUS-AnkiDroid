@@ -1,0 +1,459 @@
+{
+  "note": "REAL learner data (Duolingo HLR public release, English learners); user-level splits; test users touched exactly once with frozen artifacts; simulation-free",
+  "data": {
+    "source": "settles.acl16.learning_traces.13m.csv.gz (doi:10.7910/DVN/N8XJME), md5-verified",
+    "n_train_users": 1456,
+    "n_cal_users": 479,
+    "n_test_users": 465
+  },
+  "primary_question": "Does a TRIAD-native contextual correction add held-out predictive accuracy beyond FSRS-5 on real recall outcomes?",
+  "results": {
+    "fsrs5_fitted": {
+      "label": "FSRS-5 (fitted on train users)",
+      "m0": {
+        "logloss_soft": 0.32521038349525283,
+        "brier_soft": 0.0698017066072766,
+        "mae": 0.1829838361295369,
+        "logloss_binary": 0.3363122494684249,
+        "auc_binary": 0.5445823412193704,
+        "n_binary": 7732
+      },
+      "m1": {
+        "logloss_soft": 0.3253828329130177,
+        "brier_soft": 0.06988244812536416,
+        "mae": 0.18182673301397528,
+        "logloss_binary": 0.3368430864958754,
+        "auc_binary": 0.5465962758376571,
+        "n_binary": 7732
+      },
+      "alpha_star": 0.75,
+      "alpha_grid": [
+        {
+          "alpha": 0.0,
+          "cal_logloss": 0.33691896641627933
+        },
+        {
+          "alpha": 0.125,
+          "cal_logloss": 0.33650361371472903
+        },
+        {
+          "alpha": 0.25,
+          "cal_logloss": 0.3361768693910483
+        },
+        {
+          "alpha": 0.5,
+          "cal_logloss": 0.33578708586930023
+        },
+        {
+          "alpha": 0.75,
+          "cal_logloss": 0.3357476463257326
+        },
+        {
+          "alpha": 1.0,
+          "cal_logloss": 0.33605989128544567
+        },
+        {
+          "alpha": 1.5,
+          "cal_logloss": 0.3377565096262375
+        },
+        {
+          "alpha": 2.0,
+          "cal_logloss": 0.34091939679555056
+        }
+      ],
+      "paired_diff": {
+        "mean_ll_gain_per_user": 0.0007345503444853404,
+        "ci": [
+          -0.0010429852701667386,
+          0.00233847461336095
+        ],
+        "rel_gain_pct": 0.22009673517555572,
+        "n_users": 289
+      },
+      "strata_m0_test": {
+        "position_in_session": [
+          {
+            "position_in_session": "0-2",
+            "n": 1134,
+            "mean_p": 0.8702256900239357,
+            "mean_y": 0.9146415973797064,
+            "residual": 0.04441590735577072
+          },
+          {
+            "position_in_session": "3-5",
+            "n": 1083,
+            "mean_p": 0.8694053057124153,
+            "mean_y": 0.9112697325866325,
+            "residual": 0.04186442687421721
+          },
+          {
+            "position_in_session": "6-8",
+            "n": 965,
+            "mean_p": 0.8688957445000447,
+            "mean_y": 0.9067176577021223,
+            "residual": 0.03782191320207762
+          },
+          {
+            "position_in_session": "9-12",
+            "n": 1221,
+            "mean_p": 0.871772805706263,
+            "mean_y": 0.9055848055848132,
+            "residual": 0.033811999878550214
+          },
+          {
+            "position_in_session": "13+",
+            "n": 8679,
+            "mean_p": 0.8746457248592894,
+            "mean_y": 0.8985057195933778,
+            "residual": 0.023859994734088397
+          }
+        ],
+        "elapsed_session_min": [
+          {
+            "elapsed_session_min": "0-5",
+            "n": 7815,
+            "mean_p": 0.8730233050632846,
+            "mean_y": 0.9050762119746442,
+            "residual": 0.032052906911359536
+          },
+          {
+            "elapsed_session_min": "5-10",
+            "n": 1331,
+            "mean_p": 0.8779985434266492,
+            "mean_y": 0.8996750265345365,
+            "residual": 0.02167648310788728
+          },
+          {
+            "elapsed_session_min": "10-20",
+            "n": 1645,
+            "mean_p": 0.8727801230044498,
+            "mean_y": 0.9037814140213799,
+            "residual": 0.031001291016930055
+          },
+          {
+            "elapsed_session_min": "20-40",
+            "n": 1519,
+            "mean_p": 0.8711768047662708,
+            "mean_y": 0.8836455165783772,
+            "residual": 0.012468711812106403
+          },
+          {
+            "elapsed_session_min": "40+",
+            "n": 772,
+            "mean_p": 0.8705143195396726,
+            "mean_y": 0.9110432601365324,
+            "residual": 0.04052894059685974
+          }
+        ],
+        "events_so_far_today": [
+          {
+            "events_so_far_today": "0-4",
+            "n": 1546,
+            "mean_p": 0.8701122807189582,
+            "mean_y": 0.9147226138817477,
+            "residual": 0.044610333162789506
+          },
+          {
+            "events_so_far_today": "5-9",
+            "n": 1371,
+            "mean_p": 0.8678861833607511,
+            "mean_y": 0.9075867972375594,
+            "residual": 0.039700613876808344
+          },
+          {
+            "events_so_far_today": "10-14",
+            "n": 1285,
+            "mean_p": 0.8709599083346211,
+            "mean_y": 0.9062327836452458,
+            "residual": 0.03527287531062473
+          },
+          {
+            "events_so_far_today": "15-24",
+            "n": 2279,
+            "mean_p": 0.8722349190333579,
+            "mean_y": 0.8998933453276384,
+            "residual": 0.027658426294280503
+          },
+          {
+            "events_so_far_today": "25+",
+            "n": 6601,
+            "mean_p": 0.8756701572142467,
+            "mean_y": 0.8982143157722671,
+            "residual": 0.02254415855802039
+          }
+        ],
+        "absence_gap_capped": [
+          {
+            "absence_gap_capped": "0",
+            "n": 12746,
+            "mean_p": 0.8732368371244422,
+            "mean_y": 0.9017048105060828,
+            "residual": 0.028467973381640532
+          },
+          {
+            "absence_gap_capped": "1",
+            "n": 139,
+            "mean_p": 0.8797257453799334,
+            "mean_y": 0.9555155875299928,
+            "residual": 0.07578984215005935
+          },
+          {
+            "absence_gap_capped": "2",
+            "n": 100,
+            "mean_p": 0.877071357632063,
+            "mean_y": 0.8909761904762,
+            "residual": 0.013904832844137016
+          },
+          {
+            "absence_gap_capped": "3-6",
+            "n": 81,
+            "mean_p": 0.8482320020511253,
+            "mean_y": 0.907172251616716,
+            "residual": 0.05894024956559074
+          },
+          {
+            "absence_gap_capped": "7+",
+            "n": 16,
+            "mean_p": 0.8374113320033092,
+            "mean_y": 0.9010416666666875,
+            "residual": 0.06363033466337831
+          }
+        ]
+      },
+      "beta_ctx": {
+        "position_in_session": -0.11827136721085824,
+        "elapsed_session_min": 0.28711986251876076,
+        "events_so_far_today": -0.25534502501805456,
+        "absence_gap_capped": 0.022671089811095058
+      },
+      "m0_a": 0.20143185994762985,
+      "m0_b": 1.1122353780839396
+    },
+    "fsrs5_default": {
+      "label": "FSRS-5 (out-of-box default weights)",
+      "m0": {
+        "logloss_soft": 0.32534154107997265,
+        "brier_soft": 0.06979514557044832,
+        "mae": 0.18362747307369484,
+        "logloss_binary": 0.3363925661310011,
+        "auc_binary": 0.5445368407174318,
+        "n_binary": 7732
+      },
+      "m1": {
+        "logloss_soft": 0.3255748450999387,
+        "brier_soft": 0.06990145546376825,
+        "mae": 0.1824808018770766,
+        "logloss_binary": 0.33699408893815025,
+        "auc_binary": 0.5460334310459598,
+        "n_binary": 7732
+      },
+      "alpha_star": 0.75,
+      "alpha_grid": [
+        {
+          "alpha": 0.0,
+          "cal_logloss": 0.3369766608238927
+        },
+        {
+          "alpha": 0.125,
+          "cal_logloss": 0.3365471504100983
+        },
+        {
+          "alpha": 0.25,
+          "cal_logloss": 0.33621022297053066
+        },
+        {
+          "alpha": 0.5,
+          "cal_logloss": 0.3358117126619055
+        },
+        {
+          "alpha": 0.75,
+          "cal_logloss": 0.33577877294763286
+        },
+        {
+          "alpha": 1.0,
+          "cal_logloss": 0.33611260002884263
+        },
+        {
+          "alpha": 1.5,
+          "cal_logloss": 0.3378976464440939
+        },
+        {
+          "alpha": 2.0,
+          "cal_logloss": 0.3412089734846328
+        }
+      ],
+      "paired_diff": {
+        "mean_ll_gain_per_user": 0.0007346730520792867,
+        "ci": [
+          -0.0010929034101136033,
+          0.002387031296648431
+        ],
+        "rel_gain_pct": 0.22009330205149022,
+        "n_users": 289
+      },
+      "strata_m0_test": {
+        "position_in_session": [
+          {
+            "position_in_session": "0-2",
+            "n": 1134,
+            "mean_p": 0.8693670518818349,
+            "mean_y": 0.9146415973797064,
+            "residual": 0.045274545497871466
+          },
+          {
+            "position_in_session": "3-5",
+            "n": 1083,
+            "mean_p": 0.8684001196478515,
+            "mean_y": 0.9112697325866325,
+            "residual": 0.042869612938781
+          },
+          {
+            "position_in_session": "6-8",
+            "n": 965,
+            "mean_p": 0.8680678039505918,
+            "mean_y": 0.9067176577021223,
+            "residual": 0.038649853751530516
+          },
+          {
+            "position_in_session": "9-12",
+            "n": 1221,
+            "mean_p": 0.8711359596893669,
+            "mean_y": 0.9055848055848132,
+            "residual": 0.03444884589544639
+          },
+          {
+            "position_in_session": "13+",
+            "n": 8679,
+            "mean_p": 0.8739548449080721,
+            "mean_y": 0.8985057195933778,
+            "residual": 0.0245508746853057
+          }
+        ],
+        "elapsed_session_min": [
+          {
+            "elapsed_session_min": "0-5",
+            "n": 7815,
+            "mean_p": 0.872226818025293,
+            "mean_y": 0.9050762119746442,
+            "residual": 0.03284939394935116
+          },
+          {
+            "elapsed_session_min": "5-10",
+            "n": 1331,
+            "mean_p": 0.8776531259564208,
+            "mean_y": 0.8996750265345365,
+            "residual": 0.022021900578115705
+          },
+          {
+            "elapsed_session_min": "10-20",
+            "n": 1645,
+            "mean_p": 0.8722100946840395,
+            "mean_y": 0.9037814140213799,
+            "residual": 0.031571319337340364
+          },
+          {
+            "elapsed_session_min": "20-40",
+            "n": 1519,
+            "mean_p": 0.8704412268676904,
+            "mean_y": 0.8836455165783772,
+            "residual": 0.013204289710686767
+          },
+          {
+            "elapsed_session_min": "40+",
+            "n": 772,
+            "mean_p": 0.8693541192744709,
+            "mean_y": 0.9110432601365324,
+            "residual": 0.041689140862061436
+          }
+        ],
+        "events_so_far_today": [
+          {
+            "events_so_far_today": "0-4",
+            "n": 1546,
+            "mean_p": 0.8691910401778197,
+            "mean_y": 0.9147226138817477,
+            "residual": 0.04553157370392802
+          },
+          {
+            "events_so_far_today": "5-9",
+            "n": 1371,
+            "mean_p": 0.8670719787219687,
+            "mean_y": 0.9075867972375594,
+            "residual": 0.04051481851559069
+          },
+          {
+            "events_so_far_today": "10-14",
+            "n": 1285,
+            "mean_p": 0.8703902862003817,
+            "mean_y": 0.9062327836452458,
+            "residual": 0.03584249744486412
+          },
+          {
+            "events_so_far_today": "15-24",
+            "n": 2279,
+            "mean_p": 0.8715372454850633,
+            "mean_y": 0.8998933453276384,
+            "residual": 0.028356099842575144
+          },
+          {
+            "events_so_far_today": "25+",
+            "n": 6601,
+            "mean_p": 0.8749471552480141,
+            "mean_y": 0.8982143157722671,
+            "residual": 0.023267160524252928
+          }
+        ],
+        "absence_gap_capped": [
+          {
+            "absence_gap_capped": "0",
+            "n": 12746,
+            "mean_p": 0.8724959852968408,
+            "mean_y": 0.9017048105060828,
+            "residual": 0.02920882520924195
+          },
+          {
+            "absence_gap_capped": "1",
+            "n": 139,
+            "mean_p": 0.878201305073984,
+            "mean_y": 0.9555155875299928,
+            "residual": 0.0773142824560088
+          },
+          {
+            "absence_gap_capped": "2",
+            "n": 100,
+            "mean_p": 0.8758702016401035,
+            "mean_y": 0.8909761904762,
+            "residual": 0.015105988836096484
+          },
+          {
+            "absence_gap_capped": "3-6",
+            "n": 81,
+            "mean_p": 0.8493899010199313,
+            "mean_y": 0.907172251616716,
+            "residual": 0.057782350596784715
+          },
+          {
+            "absence_gap_capped": "7+",
+            "n": 16,
+            "mean_p": 0.840293176086106,
+            "mean_y": 0.9010416666666875,
+            "residual": 0.060748490580581516
+          }
+        ]
+      },
+      "beta_ctx": {
+        "position_in_session": -0.12052524658754797,
+        "elapsed_session_min": 0.29313086417183215,
+        "events_so_far_today": -0.25976672463390804,
+        "absence_gap_capped": 0.022745795717834503
+      },
+      "m0_a": 0.17460240024694978,
+      "m0_b": 1.1781587209690176
+    }
+  },
+  "honesty": {
+    "real_data": true,
+    "alpha_gate": "alpha selected on calibration users only; test users never used for any fitting or selection",
+    "caveat": "English-learner practice on the Duolingo app, 2012-2013 release; aggregated per-lesson outcomes (p_recall), not per-exercise binary reviews; grade mapping declared in prep_real.py; results are predictive-accuracy evidence, not a scheduling A/B trial"
+  }
+}

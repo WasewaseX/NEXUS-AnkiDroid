@@ -1,0 +1,72 @@
+{
+  "name": "v1.7 NEXUS-TRIAD two-arm evidence benchmark — normal AnkiDroid (stock FSRS) vs NEXUS-TRIAD scheduling",
+  "version": "v1.7",
+  "created": "2026-10-20",
+  "based_on": "../v16_nexus_mix2_benchmark (sim15/sim16 imported UNMODIFIED: behavior truth, FSRS wrapper, evaluator, env, DPI endpoint); v14/v15/v16 files untouched",
+  "motivation": "User directive: 'now same memory benchmarks but simulate using of normal anki droid and nexus triad ones no hallucination or guesses evidence based result' + 'build toward a TRIAD-native memory model only when you have evidence showing which aspect of human recall the current FSRS-centered approach fails to capture. Then compare the new model against FSRS using real, held-out outcomes.' v1.7 therefore (a) runs the two-arm scheduling benchmark on the v1.6 truth model, and (b) logs per-review event diagnostics that are compared against the SAME diagnostics computed on REAL learner data (Duolingo HLR public dataset, English learners) in the companion real-data pipeline.",
+
+  "master_seed_blocks": {
+    "confirmation": 20261101
+  },
+  "seed_policy": "IDENTICAL to the v1.6 confirmation block (20261101). The shared arm fsrs_multitype MUST reproduce the v1.6 confirmation-base numbers bit-exactly (replication audit in analyze17). No calibration block is needed because the TRIAD arm's policy knobs are FROZEN EX ANTE from the v1.6 frozen policy (p075_prot) — no re-tuning is performed (anti-circularity).",
+
+  "horizon_days": 28,
+  "probe_days": [7, 14, 21, 28],
+  "population": { "n_reps": 3, "n_learners_per_archetype": 4 },
+
+  "arms": {
+    "fsrs_multitype": {
+      "role": "Arm A — 'normal AnkiDroid': stock FSRS scheduling, scheduler's own due order, grinds to budget. Verbatim sim16.policy.FsrsMultiType16. This is the released v1.8 APK's scheduling behavior (its TRIAD layer is a passive tracker that does not modify scheduling).",
+      "implementation": "sim16.policy.FsrsMultiType16 (imported unmodified)"
+    },
+    "nexus_triad": {
+      "role": "Arm B — NEXUS-TRIAD owns scheduling. FSRS remains the authoritative per-card memory engine (intervals NEVER modified: the alpha=0 gate is respected — no contextual term touches interval math). TRIAD owns: (1) review prioritization — per-skill due queues sorted by ASCENDING scheduler-predicted retrievability (most fragile first) before the v1.5 dishabituation interleave (fragile material is reviewed while the session is fresh); (2) session control — goal line at 75% of budget with due-core protection (FROZEN from the v1.6 frozen policy p075_prot; not re-tuned); (3) cold-start priors — weakest-skill-biased new-card intake quota (v1.5 mix rule, unchanged).",
+      "implementation": "sim17.triad.NexusTriad",
+      "frozen_knobs": { "goal_stop_fraction": 0.75, "due_core_protect": true, "source": "v1.6 outputs/frozen_policy.json (declared ex ante; no v1.7 tuning)" }
+    }
+  },
+
+  "ablations": {
+    "triad_no_risk_order": {
+      "role": "descriptive: TRIAD with the risk-ordering layer OFF (queues in scheduler-native most-overdue order) — isolates the ordering effect; pacing knobs identical",
+      "implementation": "sim17.triad.NexusTriad with risk_order=False"
+    },
+    "triad_no_pacing": {
+      "role": "descriptive: TRIAD with the goal line OFF (grinds to budget) — isolates the pacing effect; risk ordering on",
+      "implementation": "sim17.triad.NexusTriad with goal_stop_fraction=1.0 (due-core protection moot)"
+    }
+  },
+
+  "scenarios_run": {
+    "comment": "Declared subset of the v1.6 stress grid, chosen to bound the layers NEW or LOAD-BEARING in v1.7: fatigue->quit channel (ordering front-loads fragile work early, which only matters if fatigue penalizes performance), doubled monotony (interleave interacts with ordering), and the two skeptical cells (mechanical floor). The full 9-scenario grid for the pacing knobs already exists in v1.6 and is not re-run.",
+    "base": {},
+    "no_fatigue_quit": { "K_FATIGUE": 0.0 },
+    "double_monotony": { "K_MONOTONY": 0.24 },
+    "skeptical": { "K_MONOTONY": 0.0, "K_FATIGUE": 0.0, "K_VALENCE": 0.0, "B_VALENCE": 0.0, "no_frustration": true },
+    "hard_skeptical": { "K_MONOTONY": 0.0, "K_FATIGUE": 0.0, "B_VALENCE": 0.0, "K_VALENCE": 0.0, "B_HABIT": 0.0, "no_frustration": true }
+  },
+
+  "v17_preregistration": {
+    "written_before": "any v1.7 run",
+    "P1_no_harm_primary": "|ret28_diff(nexus_triad - fsrs_multitype)| <= 0.02 on the confirmation block (paired CRN, same statistic as v1.6 K3). This is the PRIMARY claim: TRIAD-owned scheduling must not harm learning.",
+    "P2_efficiency_secondary": "DPI/hour relative gain of nexus_triad vs fsrs_multitype >= +5% with bootstrap CI excluding 0 (v1.6 K1 rule, carried). Point estimate and CI reported as-is either way; no superiority claim without the CI.",
+    "P3_ordering_effect_exploratory": "nexus_triad vs triad_no_risk_order: DPI/h and ret28 paired diffs (exploratory attribution of the NEW layer; no pass/fail).",
+    "P4_honesty": "v1.6 K4/K5 definitions: due_completion_rate diff >= -0.02; premature-quit rate and quit-intensity diffs reported with CIs.",
+    "P5_diagnostics_descriptive": "per-review event rows (scheduler-predicted retrievability before each review, outcome, session context) are logged for BOTH arms and analyzed ONLY descriptively: FSRS calibration residuals stratified by session position/elapsed time/workload/absence. In-simulation residuals are properties of the DECLARED truth model; the same stratification is computed on real learner data by the companion real-data pipeline (scripts/v17/real_*.py) — the real data is the evidence base for the TRIAD-native memory-model question, the simulation only bounds scheduling-level consequences.",
+    "P6_stress": "session-minutes diff, quit diff and ret diff per scenario with CIs; mechanical floor = hard_skeptical session diff.",
+    "floors": { "retention_tolerance": 0.02, "dpi_relative_gain_pct": 5.0, "due_completion_floor": -0.02 },
+    "analysis": "paired CRN diffs per (rep, learner_id); 95% cluster bootstrap (cluster = learner_id, n=2000); the confirmation block is the ONLY evidence; the shared arm must replicate v1.6 bit-exactly (any drift is a bug, not noise)"
+  },
+
+  "event_log_fields": {
+    "comment": "Logged by a transparent scheduler proxy; consumes NO RNG and cannot alter behavior (delegation only), verified by the replication audit.",
+    "fields": "arm, rep, learner_id, day, t_min, elapsed_min, event_idx_in_session, skill, item_id, grade, correct, r_before (scheduler-predicted retrievability immediately BEFORE the grade was applied), s_before (scheduler stability estimate before update), due_count_session_start"
+  },
+
+  "honesty": {
+    "simulation_not_humans": "every v1.7 scheduling number is a property of the declared simulation; no real learner has been measured by the simulation",
+    "released_apk_status": "the released v1.8 APK's TRIAD is a passive tracker (its onAnswer record is discarded after FSRS has already scheduled); Arm A reproduces that scheduling behavior; Arm B evaluates the TRIAD scheduling DESIGN, not the shipped APK",
+    "alpha_gate": "interval decisions remain pure FSRS in BOTH arms (alpha=0): the simulation contains no interval-modification effect to find, by design, until real held-out evidence justifies alpha>0",
+    "no_circular_tuning": "TRIAD knobs are frozen from the v1.6 frozen policy; the v1.7 truth constants are the v1.5/v1.6 constants untouched; no knob was tuned on v1.7 runs"
+  }
+}
