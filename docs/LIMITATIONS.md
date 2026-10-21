@@ -1,5 +1,10 @@
 # Limitations (v0.2) — the honest list
 
+## TRIAD interval adjustments are hard-disabled (feature flag)
+
+- **`TriadFeatureFlags.TRIAD_INTERVAL_ADJUSTMENTS = false`** in the instrument (this repo): TRIAD can never change FSRS intervals in this release. The gate is consultable in observability mode only and every consultation writes a `TRIAD_INTERVAL_GATE` audit receipt; `TRIAD_INTERVAL_ADJUSTED` entries are absent by construction. **FSRS-5 stays byte-identical to the stock scheduler** (`TriadGateTest`).
+- Evidence state: the v1.7 real-data alpha gate (Duolingo HLR public release, user-level held-out splits) showed **no held-out logloss gain** beyond fitted FSRS-5, so **alpha = 0** per the pre-registered one-shot gate. See `docs/SESSION_CONTROL_AUDIT.md` for the full audit, the line-referenced scheduling-authority findings, and the activation protocol a future evidenced release must follow.
+
 ## The real AnkiDroid fork now EXISTS — with these caveats
 
 As of v0.2, the project maintains a **real fork of AnkiDroid** ([WasewaseX/Anki-Android](https://github.com/WasewaseX/Anki-Android)) in which **NEXUS-TRIAD v1.8 replaces the bare FSRS review entry** (PRs #1–#4 merged inside the fork as the release gate; APK built by CI and published at the fork's Releases). Honest caveats about that fork build:

@@ -17,6 +17,8 @@ import io.github.wasewasex.nexus.fsrs.FsrsReviewLog
 import io.github.wasewasex.nexus.fsrs.Rating
 import io.github.wasewasex.nexus.skills.Skill
 import io.github.wasewasex.nexus.skills.SkillProfile
+import io.github.wasewasex.nexus.triad.TriadFeatureFlags
+import io.github.wasewasex.nexus.triad.TriadGate
 
 /**
  * Full persistent application state. One JSON document; local-only storage.
@@ -25,6 +27,12 @@ import io.github.wasewasex.nexus.skills.SkillProfile
 class AppState(
     var schemaVersion: Int = 1,
     var fsrsParams: FsrsParameters = FsrsParameters(),
+    /**
+     * TRIAD contextual-correction strength. Evidence-mandated to 0.0 (v1.7 real-data alpha
+     * gate failed to show a held-out gain; see docs/SESSION_CONTROL_AUDIT.md). Only an
+     * evidenced release may change this, together with the hard-off feature flag.
+     */
+    var triadAlpha: Double = 0.0,
     var cards: LinkedHashMap<String, FsrsCard> = LinkedHashMap(),
     var reviewLogs: ArrayList<FsrsReviewLog> = ArrayList(),
     var profile: SkillProfile = SkillProfile(),
@@ -209,6 +217,26 @@ class SessionEngine(val state: AppState) {
             "scheduledDays" to result.reviewLog.scheduledDays.toString(),
             "reviewSeconds" to secondsSpent.toString(),
         )
+        // TRIAD session-control hook (audit-first, feature-flagged). Exactly one consultation
+        // point, strictly AFTER FSRS has produced its authoritative result. In this release
+        // TriadFeatureFlags.TRIAD_INTERVAL_ADJUSTMENTS is hard-off: the gate NEVER mutates
+        // scheduling state, and this entry is the per-review audit receipt. If a future
+        // evidenced release enables the flag, an applied adjustment would additionally emit a
+        // TRIAD_INTERVAL_ADJUSTED entry — its absence is itself the compliance proof.
+        // See docs/SESSION_CONTROL_AUDIT.md and TriadGateTest.
+        if (TriadFeatureFlags.TRIAD_OBSERVABILITY) {
+            state.audit.add(
+                "TRIAD_INTERVAL_GATE",
+                "itemId" to itemId,
+                "intervalAdjustmentsEnabled" to TriadFeatureFlags.TRIAD_INTERVAL_ADJUSTMENTS.toString(),
+                "alpha" to state.triadAlpha.toString(),
+                "decision" to TriadGate.decisionFor(
+                    TriadFeatureFlags.TRIAD_INTERVAL_ADJUSTMENTS,
+                    state.triadAlpha,
+                ),
+                "fsrsScheduledDays" to result.reviewLog.scheduledDays.toString(),
+            )
+        }
         return result.reviewLog
     }
 
